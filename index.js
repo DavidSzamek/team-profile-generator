@@ -6,8 +6,10 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 // Node.js | Path
 const path = require('path');
-// 
-
+// File Directory
+const fileDirectory = path.resolve(__dirname, "dist");
+// File Path
+const filePath = path.join(fileDirectory, "index.html");
 
 // Module Exports
 const manager = require('./lib/Manager');
@@ -72,8 +74,8 @@ const questions = [
         {
             type: "input",
             name: "github",
-            message: "Please enter the engineer's Github username."
-            valide: github => {
+            message: "Please enter the engineer's Github username.",
+            validate: github => {
                 if (github) {
                     return true;
                 } else {
@@ -85,4 +87,28 @@ const questions = [
     ]
 
     // Details for intern
-    
+    internDetails = [
+        {
+            type: "input",
+            name: "school",
+            message: "Please enter the school this intern is from.",
+            validate: school => {
+                if (school) {
+                    return true;
+                } else {
+                    console.log("You must enter a school name!");
+                    return false;
+                }
+            }
+        }
+    ]
+
+// Create a function to initialise the app
+const init = () => {
+    if(fs.existsSync)
+}
+
+
+
+// Function to call the initialise app 
+init();
