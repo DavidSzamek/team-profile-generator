@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Profile Generator</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- Jumbotron header -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 jumbotron mb-3 bg-danger text-white">
+                <h1 class="text-center">My Team</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team container -->
+    <div class="container">
+        <div class="row">
+            <div class="team-area col-12 d-flex flex-wrap justify-content-between bg-secondary p-3">
+                {{ team }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
