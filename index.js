@@ -12,10 +12,9 @@ const fileDirectory = path.resolve(__dirname, "dist");
 const filePath = path.join(fileDirectory, "index.html");
 
 // Module Exports
-const manager = require('./lib/Manager');
-const engineer = require('./lib/Engineer');
-const intern = require('./lib/Intern');
-const { validate } = require('@babel/types');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 
 // Team
@@ -105,10 +104,74 @@ const questions = [
 
 // Create a function to initialise the app
 const init = () => {
-    if(fs.existsSync)
+    newEmployee();
 }
 
+// Function to create new employee
 
+const newEmployee = async () => {
+    await inquirer.prompt(questions)
+        .then((response) => {
+            let name = response.name;
+            let id = response.id;
+            let email = response.email;
+            let role = response.role; 
+            let officeNumber;
+            let github;
+            let school;
+
+            if (role === "Manager") {
+                inquirer.prompt(managerDetails).then((response) => {
+                    officeNumber = response.officeNumberl
+                    let employee = new Manager(name, id, email, officeNumber);
+                    teamArray.push(employee);
+                    addEmployee(teamArray);
+                });
+            } else if (role === "Engineer") {
+                inquirer.prompt(engineerDetails).then((response) => {
+                    github = response.github;
+                    let employee = new Engineer(name, id, email, github);
+                    teamArray.push(employee);
+                    addEmployee(teamArray);
+                });
+            } else if (role === "Intern") {
+                inquirer.prompt(internDetails).then((response) => {
+                    school = response.school;
+                    let employee = new Intern(name, id, email, school);
+                    teamArray.push(employee);
+                    addEmployee(teamArray);
+                });
+            }
+        });
+};
+
+// Function to add a new employee
+
+const addEmployee = async (array) => {
+    await inquirer.prompt({
+        type: "confirm",
+        name: "addEmployee",
+        message: "Would you like to add a new employee?"
+    }).then(async (response) => {
+        var createEmployee = response.addEmployee;
+        if (await createEmployee === true) {
+            newEmployee();
+        } else if (await createEmployee === false) {
+            if (!fs.existsSync(fileDirectory)) {
+                fs.mkdirSync(fileDirectory)
+            }
+
+        fs.writeFile(filePath, generateMarkdown(array), (err) => {
+            
+            if (err) {
+                return console.log(err);
+            }
+
+            console.log("Your team index file has been created!");
+        });
+        }
+    })
+};
 
 // Function to call the initialise app 
 init();
