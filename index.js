@@ -168,7 +168,7 @@ const addEmployee = async (array) => {
                 return console.log(err);
             }
 
-            console.log("Your team index file has been created!");
+            console.log("Your team index file has now been created in the 'dist' folder!");
         });
         }
     })
