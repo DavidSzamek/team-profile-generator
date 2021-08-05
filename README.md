@@ -40,6 +40,10 @@ To test the functionality, you must run;
 
 
 
+https://user-images.githubusercontent.com/83954907/128309162-b4e21622-1f2f-498b-9604-7dab071f11c9.mp4
+
+
+
 ## Deployed
 
 You can find the REPO here: https://github.com/DavidSzamek/team-profile-generator
