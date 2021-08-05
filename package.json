@@ -4,6 +4,7 @@
   "description": "Object orientated programming homework",
   "main": "index.js",
   "dependencies": {
+    "inquirer": "^8.1.2",
     "jest": "^27.0.6"
   },
   "devDependencies": {},
@@ -11,5 +12,16 @@
     "test": "test"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidSzamek/team-profile-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DavidSzamek/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/DavidSzamek/team-profile-generator#readme"
 }

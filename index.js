@@ -15,7 +15,7 @@ const filePath = path.join(fileDirectory, "index.html");
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-
+const generateHTML = require('./lib/generateMarkdown');
 
 // Team
 let teamArray = [];
@@ -61,7 +61,7 @@ const questions = [
                 if (officeNumber) {
                     return true;
                 } else {
-                    console.log("You must enter an office number.");
+                    console.log("You must enter the manager's office number.");
                     return false;
                 }
             }
@@ -122,7 +122,7 @@ const newEmployee = async () => {
 
             if (role === "Manager") {
                 inquirer.prompt(managerDetails).then((response) => {
-                    officeNumber = response.officeNumberl
+                    officeNumber = response.officeNumber;
                     let employee = new Manager(name, id, email, officeNumber);
                     teamArray.push(employee);
                     addEmployee(teamArray);
@@ -148,7 +148,8 @@ const newEmployee = async () => {
 // Function to add a new employee
 
 const addEmployee = async (array) => {
-    await inquirer.prompt({
+    await inquirer
+    .prompt({
         type: "confirm",
         name: "addEmployee",
         message: "Would you like to add a new employee?"
@@ -161,8 +162,8 @@ const addEmployee = async (array) => {
                 fs.mkdirSync(fileDirectory)
             }
 
-        fs.writeFile(filePath, generateMarkdown(array), (err) => {
-            
+            fs.writeFile(filePath, generateHTML(array), (err) => {
+
             if (err) {
                 return console.log(err);
             }
