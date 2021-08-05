@@ -27,7 +27,7 @@ To install the application, you must run;
 To initiate the application, you must run;
 
 ```
-        npm index.js
+        node index.js
 ```
 
 To test the functionality, you must run;
